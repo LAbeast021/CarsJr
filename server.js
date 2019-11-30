@@ -25,6 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// using method over ride for delete and put requests /////////
 app.use(methodOverRide('_method'));
 app.use(session({
   secret: 'CarsJr',

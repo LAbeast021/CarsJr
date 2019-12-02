@@ -9,6 +9,10 @@
 </head>
 <body>
     <a href="/logout"> SIGN OUT</a> | <p>Welcome <%=loggedInUser.name%></p> | <a href="/profile/<%= loggedInUser._id %>"> YOUR PROFILE</a>
+       <a href="/profile/<%= loggedInUser._id %>"> <div id="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a>
+
+
+
     <% users.forEach (user => { %>
         <div id="post-container">
             <div id="profile-pic" style="background-image: url('<%= user.avatar%>');" ></div>

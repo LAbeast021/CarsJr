@@ -10,6 +10,7 @@ var passport = require('passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var homeRouter = require('./routes/home');
+var profilesRouter = require('./routes/profiles');
 
 var app = express();
 // ACCESSING .ENV FILES 
@@ -40,6 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 // /////////////////// using routers //////////////////////////////////
 app.use('/', indexRouter);
+app.use('/profile',profilesRouter);
 app.use('/users', usersRouter);
 app.use('/', homeRouter)
 

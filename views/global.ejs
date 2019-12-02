@@ -7,7 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> kirrrrreee khaaaaar afrighayi</h1>
+    <% users.forEach (user => { %>
+        <img src="<%= user.avatar %>" alt="avatar">
+        <h1><%= user.name %></h1>
+        <h1><%= user.email %></h1>
+        <h1> GOOGLE ID = <%= user.googleId %></h1>
+        <h1> MONGOOSE ID = <%= user._id %></h1>
+    <%});%>
     
 </body>
 </html>

@@ -9,6 +9,7 @@ var passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var homeRouter = require('./routes/home');
 
 var app = express();
 // ACCESSING .ENV FILES 
@@ -37,9 +38,10 @@ app.use(session({
 app.use(passport.initialize());
 //Intialize passport session.
 app.use(passport.session());
-
+// /////////////////// using routers //////////////////////////////////
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/', homeRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

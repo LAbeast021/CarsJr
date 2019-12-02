@@ -6,11 +6,6 @@ var passport = require('passport');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'CarsJr' });
 });
-router.get('/global',function(req,res){
-  res.render('global');
-})
-
-
 
 router.get('/auth/google',passport.authenticate(
   'google',
@@ -21,8 +16,8 @@ router.get('/auth/google',passport.authenticate(
   router.get('/oauth2callback', passport.authenticate(
     'google',
     {
-      successRedirect: '/global',
-      failureRedirect: '/global'
+      successRedirect: '/home',
+      failureRedirect: '/home'
     }
     ));
 

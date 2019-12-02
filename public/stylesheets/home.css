@@ -1,0 +1,16 @@
+#post-container{
+    border: 5px solid greenyellow;
+}
+#profile-pic{
+    display: inline-block;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-size: 100px;
+}
+a{
+    width: 90px;
+    height: 30px;
+    border-radius: 50%;
+    background: greenyellow;
+}

@@ -1,9 +1,10 @@
 body {
+  background-image: url('../images/Road.jpg');
+  background-size: 100%;
+
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url('../images/Road.jpg');
 }
-
 a {
-  color: #00B7FF;
+  color: rgb(170, 18, 18);
 }

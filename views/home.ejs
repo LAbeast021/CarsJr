@@ -11,8 +11,9 @@
     <div id="navbar">
         <a href="/logout"> SIGN OUT</a> | 
         <p>Welcome <%=loggedInUser.name%></p> | 
-        <a href="/profile/<%= loggedInUser._id %>"> YOUR PROFILE</a> |
-        <a href="/profile/<%= loggedInUser._id %>"> <div id="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a>
+        <a href="/users/profile/<%= loggedInUser._id %>"> YOUR PROFILE</a> |
+        <a href="/users/profile/<%= loggedInUser._id %>"> <div id="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> |
+        <a href="/users/newpost"> ADD A NEW POST</a>
     </div>
     
 
@@ -22,16 +23,32 @@
                 <div id="profile-pic" style="background-image: url('<%= user.avatar%>');" ></div>
                 <a href="/users/<%= user._id%>"> <h2><%= user.name%></h2></a>
             </div>
+
+
+
+
+  
             <div id="post-holder">
                 <div id="post" style="background-image: url('<%= user.avatar %>');"></div>
                 <div id="caption-holder">caption</div>
             </div>
-            <div id="comment-holder">
-                <h1><%= user.email %></h1>
-                <h1> GOOGLE ID = <%= user.googleId %></h1>
-                <h1> MONGOOSE ID = <%= user._id %></h1>
-            </div>
+       
 
+
+
+
+            <div id="comment-holder">
+                <form action="/post/new" method="POST">
+                    <input type="text" placeholder="comment" name="comment">
+                    <input type="submit" value="ADD THE COMMENT">
+                    
+                </form>
+            </div>
+            <!-- <h1><%= user.email %></h1>
+            <h1> GOOGLE ID = <%= user.googleId %></h1>
+            <h1> MONGOOSE ID = <%= user._id %></h1> -->
+            
+           
 
        
 

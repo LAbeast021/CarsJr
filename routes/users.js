@@ -3,7 +3,9 @@ var router = express.Router();
 var User = require('../models/user');
 var usersCtrl = require('../controllers/users');
 
-router.get('/:id', usersCtrl.show)
+router.get('/profile/:id',usersCtrl.profilePage )
+router.get('/newpost', usersCtrl.newPost)
+router.get('/:id', usersCtrl.userPage)
 
 
 

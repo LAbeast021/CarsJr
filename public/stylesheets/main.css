@@ -1,23 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+/* ///////////////// NAV BAR ITEMS ↴ */
 #post-container{
     border: 5px solid greenyellow;
-}
-#profile-pic{
-    display: inline-block;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    background-size: 100px;
-}
-a{
-    width: 90px;
-    height: 30px;
-    border-radius: 50%;
-    background: greenyellow;
 }
 #icon-holder{
     width: 30px;
     height: 30px;
     border-radius: 50%;
     background-size: 30px;
-    outline: none;
 }
+/* ///////////////// EACH POST TEMPLATE ↴ */
+#user-information{
+    background: orange;
+    width: 100%;
+    display: flex;
+    justify-content:start;
+    align-items: center;
+}
+#user-information > a {
+    text-decoration: none;
+    transition: 3s;
+    margin-left:1%;
+}
+#user-information > a :hover{
+    text-decoration: underline red;
+}
+#profile-pic{
+    transition: 3s;
+    display: inline-block;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-size: 70PX;
+    margin: 1%;
+}
+#post-holder{
+    display: flex;
+    justify-content: center;
+    background: chocolate;
+}
+#post{
+    width: 500px;
+    height: 500px;
+    background-size: 500px;
+    background-repeat: no-repeat;
+}
+/* //////////////////////////////////////////////////////// */

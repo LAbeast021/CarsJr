@@ -5,7 +5,6 @@ var User = require('../models/user');
 
 module.exports = {
     userPage,
-     newPost,
     profilePage,
     // upload
 };
@@ -23,9 +22,7 @@ function userPage (req,res){
         })
     })
 }
-function newPost (req,res){
-    res.render('users/newpost')
-}
+
 
 
 // function upload(req, res){

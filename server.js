@@ -10,6 +10,8 @@ var passport = require('passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var homeRouter = require('./routes/home');
+var postsRouter = require('./routes/posts');
+
 
 var app = express();
 // ACCESSING .ENV FILES 
@@ -26,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('upload'))
 // using method over ride for delete and put requests /////////
 app.use(methodOverRide('_method'));
 app.use(session({
@@ -40,8 +43,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 // /////////////////// using routers //////////////////////////////////
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/', homeRouter)
+app.use('/users', usersRouter);
+app.use('/posts', postsRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

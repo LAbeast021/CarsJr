@@ -1,9 +1,13 @@
 var User = require('../models/user');
+// var multer = require('multer');
+// var uploading = multer({dest: 'uploads/'})
+
 
 module.exports = {
     userPage,
      newPost,
-    profilePage
+    profilePage,
+    // upload
 };
 
 function profilePage(req,res){
@@ -22,6 +26,17 @@ function userPage (req,res){
 function newPost (req,res){
     res.render('users/newpost')
 }
+
+
+// function upload(req, res){
+//     console.log(typeof(req.body.image));
+//     Request(`${req.body.image}`, function(err,thing){
+//         console.log(thing);
+//     })
+//     res.redirect('/home');
+// }
+
+
 
         // User.findOne({_id : req.user._id}, function(err, user){
         //     console.log(user)

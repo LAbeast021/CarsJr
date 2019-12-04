@@ -23,6 +23,17 @@ function createPost (req, res){
 function createComment (req, res){
     User.findOne({_id: req.params.id}, function(err, user){
         // FIND THE POST USING THE REQ.QUERY.POSTID AND THEN PUSH THE REQ.BODY WITH USER._ID ADDED TO visitorid TO THE COMMENTS ARRAY OF THAT POST
-        res.redirect('/home');
+        user.posts.find( post => {
+            if(post._id === req.query.postId){
+                req.body.visitorId = req.user._id
+                req.body.visitorAvatar = req.user.avatar
+                req.body.visitorName = req.user.name
+                user.post.comments.push(req.body)
+                user.save(function(err){
+                    res.redirect('/home');
+                })
+            }
+        })
+        
     })
 }

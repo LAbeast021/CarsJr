@@ -43,7 +43,38 @@
 
                     </div>
                 </div>
-                <div id="comment-holder">
+                <div id="comments-holder">
+                    <% if (post.comments.length){%>
+                        <%post.comments.forEach (comment => {%>
+                            <% if (comment.visitorId === loggedInUser._id){%>
+                                <div id="logged-in-user-comment">
+
+                                    <div id="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a>
+                                    <a href="/users/profile/<%= loggedInUser._id%>"> <%= loggedInUser.name%></a>
+                                    <p> <%= comment.comment%></p>
+                                    <form action="/users/deletecomment/<%= user._id%>?_method=DELETE&postId=<%= post._id%>&commentId=<%= comment._id%>">
+                                        <input type="submit" value="✕">
+                                    </form>
+
+                                </div>
+                            <%}%>
+
+                            <% else {%>
+                                
+                                <div id="other-users-comment">
+                                    <div id="icon-holder" style="background-image: url('<%= comment.visitorAvatar %>');"></div></a>
+                                    <a href="/users/<%= comment.visitorId%>"> <%= comment.visitorName%></a>
+                                    <p> <%= comment.comment%></p>
+                                </div>
+
+                            <% }%>
+
+                        <%}%>
+                    <%};%>
+                </div>
+
+
+                <div id="new-comment-holder">
                         <form action="/posts/comment/<%= user._id%>?postId=<%= post._id %>" method="POST">
                             <input type="text" placeholder="comment" name="comment">
                             <input type="submit" value="ADD THE COMMENT">  

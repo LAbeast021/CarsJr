@@ -3,7 +3,9 @@ var Schema = mongoose.Schema;
 
 var commentSchema = new Schema ({
     comment:String,
-    visitorId: String
+    visitorId: String,
+    visitorAvatar: String,
+    visitorName: String
 },{
     timestamps:true
 })

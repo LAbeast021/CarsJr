@@ -11,7 +11,7 @@ var postsCtrl = require('../controllers/posts');
 
 
 
-
+router.post('/comment/:id' , postsCtrl.createComment)
 router.post('/upload', upload.single('image') , postsCtrl.createPost)
 router.get('/new', postsCtrl.newPost)
 

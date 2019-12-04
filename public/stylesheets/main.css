@@ -51,12 +51,17 @@
     background: chocolate;
 }
 #post{
+    background: yellow;
     width: 500px;
     height: 500px;
     background-size: 500px;
-    background-repeat: no-repeat;
+     background-repeat: space;
 }
 #caption-holder{
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
     width: 500px;
     height: 500px;
     background: rgba(128, 128, 128, 0.431);

@@ -28,25 +28,34 @@
 
             <% user.posts.forEach ( post => {%>
                 <div id="post-holder">
-                    <div id="post" style="background-image: url('<%= user.avatar %>');"></div>
-                    <div id="caption-holder">caption</div>
+                    <div id="post" style="background-image: url('<%= post.image %>');"></div>
+                    <div id="caption-holder">
+
+                        <h1>Brand</h1>
+                        <h4><%= post.brand%></h4>
+                        <h1>Model</h1>
+                        <h4><%= post.model%></h4>
+                        <h1>Year</h1>
+                        <h4><%= post.year %></h4>
+                        <h1> Horse Power </h1>
+                        <h4><%= post.horsePower%></h4>
+                        <h4> <%= post.caption%></h4>
+
+                    </div>
                 </div>
-       
+                <div id="comment-holder">
+                        <form action="/posts/comment/<%= user._id%>?postId=<%= post._id %>" method="POST">
+                            <input type="text" placeholder="comment" name="comment">
+                            <input type="submit" value="ADD THE COMMENT">  
+                        </form>
+                    </div>
+            <% }) ;%>    
 
 
-            <div id="comment-holder">
-                <form action="/post/new" method="POST">
-                    <input type="text" placeholder="comment" name="comment">
-                    <input type="submit" value="ADD THE COMMENT">
-                    
-                </form>
-            </div>
+           
             <!-- <h1><%= user.email %></h1>
             <h1> GOOGLE ID = <%= user.googleId %></h1>
             <h1> MONGOOSE ID = <%= user._id %></h1> -->
-            
-           
-
 
         </div>
         <%};%>

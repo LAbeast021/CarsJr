@@ -7,7 +7,6 @@ var storage = cloudinaryStorage({
     cloudinary,    
 });
 var upload = multer({storage})
-var User = require('../models/user');
 var postsCtrl = require('../controllers/posts');
 
 

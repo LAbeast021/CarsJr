@@ -10,6 +10,12 @@ function newPost (req,res){
 }
 
 function createPost (req, res){
-    console.log(req.file , "-------------------", req.body);
-    res.redirect('/home');
+   User.findOne({_id: req.User._id},function(err, user){
+       console.log(user);
+       req.body.image = req.file.secure_url
+       user.posts.push(req.body)
+       user.save(function(err){
+           res.redirect('/home');
+       })
+   })
 }

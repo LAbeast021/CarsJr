@@ -18,23 +18,20 @@
     
 
     <% users.forEach (user => { %>
-        <div id="post-container">
-            <div id="user-information">
-                <div id="profile-pic" style="background-image: url('<%= user.avatar%>');" ></div>
-                <a href="/users/<%= user._id%>"> <h2><%= user.name%></h2></a>
-            </div>
+        <% if (user.posts.length){ %>
+            <div id="post-container">
+                <div id="user-information">
+                    <div id="profile-pic" style="background-image: url('<%= user.avatar%>');" ></div>
+                    <a href="/users/<%= user._id%>"> <h2><%= user.name%></h2></a>
+                </div>
 
 
-
-
-  
-            <div id="post-holder">
-                <div id="post" style="background-image: url('<%= user.avatar %>');"></div>
-                <div id="caption-holder">caption</div>
-            </div>
+            <% user.posts.forEach ( post => {%>
+                <div id="post-holder">
+                    <div id="post" style="background-image: url('<%= user.avatar %>');"></div>
+                    <div id="caption-holder">caption</div>
+                </div>
        
-
-
 
 
             <div id="comment-holder">
@@ -50,13 +47,9 @@
             
            
 
-       
-
-
-
-
 
         </div>
+        <%};%>
     <%});%>
 </body>
 </html>

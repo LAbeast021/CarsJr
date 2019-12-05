@@ -1,4 +1,8 @@
 var User = require('../models/user');
+var request = require("request");
+const URL = 'https://private-anon-37cbdd5199-carsapi1.apiary-mock.com/manufacturers'
+const url2  ="https://private-anon-37cbdd5199-carsapi1.apiary-mock.com/cars"
+// LIST OF MANUFACTORS IN NAME PROPERTY AND ALL CAR MODELS IN MODEL
 
 module.exports = {
     newPost,
@@ -6,11 +10,18 @@ module.exports = {
     createComment,
     deleteComment
 }
+// ////////////////////////////////////
+
 
 function newPost (req,res){
-    res.render('users/newpost')
+    request(URL , function(err, response, body){
+        var cars = JSON.parse(body);
+        res.render('users/newpost',{cars})
+    })
 }
 
+
+// //////////////////
 function createPost (req, res){
    User.findOne({_id: req.user._id},function(err, user){
        console.log(user);
@@ -35,7 +46,7 @@ function createComment (req, res){
                 }) 
             }   
         })
-        res.redirect('/home');
+        res.redirect(`back`);
     })
 };
 function deleteComment (req, res){
@@ -48,7 +59,7 @@ function deleteComment (req, res){
                 if (err) console.log(err)
             })
         })
-        res.redirect('/home');
+        res.redirect(`back`);
     })
 }
 

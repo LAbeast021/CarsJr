@@ -4,6 +4,16 @@
         background-color: black;
     }
 </style>
+<div id="profile-bio-section">
+        <div id="profile-picture" style="background-image: url(<%=user.avatar%>);"> </div>
+        <div style="color: white;">
+            <h3>User Name : </h3>
+        </div>
+        <div id="user-username">
+            <h3><%= user.name%></h3>
+        </div>
+    
+    </div>
 
 <%if (user.posts.length){%>
 <% user.posts.forEach ( post => {%>

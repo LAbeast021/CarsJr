@@ -5,7 +5,19 @@
     }
 </style>
 <div id="profile-bio-section">
-    
+    <div id="profile-picture" style="background-image: url(<%=loggedInUser.avatar%>);"> </div>
+    <div style="color: white;">
+        <h3>User Name : </h3>
+        <h3>Email :</h3>
+
+    </div>
+    <div id="user-username">
+        
+        <h3><%= loggedInUser.name%></h3>
+        
+        <h3><%= loggedInUser.email%></h3>
+    </div>
+
 </div>
 <%if (user.posts.length){%>
 <% user.posts.forEach ( (post, postIdx) => {%>

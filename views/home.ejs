@@ -12,8 +12,8 @@
         <a href="/logout"> SIGN OUT</a> | 
         <p>Welcome <%=loggedInUser.name%></p> | 
         <a href="/users/profile/<%= loggedInUser._id %>"> YOUR PROFILE</a> |
-        <a href="/users/profile/<%= loggedInUser._id %>"> <div id="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> |
-        <a href="/posts/new"> ADD A NEW POST</a>
+        <a href="/users/profile/<%= loggedInUser._id %>"> <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> |
+        <a href="/posts/new"><div class="icon-holder" style="background-image: url('../public/images/plus.png'); background-color: white;"></div></a>
     </div>
     
 
@@ -92,3 +92,6 @@
     <%});%>
 </body>
 </html>
+
+
+<!-- <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->

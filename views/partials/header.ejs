@@ -4,9 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/main.css' />
     <title>Document</title>
 </head>
 <body>
-    
-</body>
-</html>
+    <% if (title === "Home"){%>
+    <div id="navbar">
+            <a href="/logout"><div class="add-photo icon-holder2"  style="background-image: url('../images/emergency-exit.png');"></div> </a> | 
+            <p>Welcome <%=loggedInUser.name%></p> | 
+            <a href="/users/profile/<%= loggedInUser._id %>"><div class="add-photo icon-holder" style="background-image: url('../images/profile-user.png');"></div></a> |
+            <a href="/users/profile/<%= loggedInUser._id %>"> <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> |
+            <a href="/posts/new"><div class="add-photo icon-holder"  style="background-image: url('../images/plus.png');"></div></a> |
+            <form action="/search" method="GET">
+                <input  type="search" name="userName" placeholder="search by username..."> 
+                <button class="add-photo icon-holder3"  style="background-image: url('../images/magnifying-glass.png'); " type="submit" ></button>
+            </form>
+        </div>
+        <%}%>
+
+        <% if (title === "Search"){%>
+
+            <div id="navbar">
+                    <a href="/logout"><div class="add-photo icon-holder2"  style="background-image: url('../images/emergency-exit.png');"></div> </a> | 
+                    <p>Welcome <%=loggedInUser.name%></p> | 
+                    <a href="/users/profile/<%= loggedInUser._id %>"><div class="add-photo icon-holder" style="background-image: url('../images/profile-user.png');"></div></a> |
+                    <a href="/home"><div class="add-photo icon-holder" style="background-image: url('../images/home.png');"></div></a> |
+                    <a href="/users/profile/<%= loggedInUser._id %>"> <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> |
+                    <a href="/posts/new"><div class="add-photo icon-holder"  style="background-image: url('../images/plus.png');"></div></a> |
+                    <form action="/search" method="GET">
+                        <input  type="search" name="userName" placeholder="search by username..."> 
+                        <button class="add-photo icon-holder3"  style="background-image: url('../images/magnifying-glass.png'); " type="submit" ></button>
+                    </form>
+                </div>
+
+
+
+        <%}%>
+

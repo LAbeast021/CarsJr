@@ -26,10 +26,16 @@ body{
     height: 30px;
     background-size: 30px;
 }
-#add-photo{
+.icon-holder3{
+    width: 30px;
+    height: 30px;
+    border-top-left-radius:12px;
+    background-size: 30px;
+}
+.add-photo{
     background-color: white;
 }
-#add-photo:hover{
+.add-photo:hover{
 background-color: red;
 }
 /* ///////////////// EACH POST TEMPLATE ↴ */

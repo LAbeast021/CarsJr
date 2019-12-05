@@ -1,0 +1,19 @@
+
+    <%- include('../partials/header') %>
+
+        <%if(!users.length){%>
+            <p style="color: white;">Sorry nothing found</p>
+        <%} else {%>
+        <p style="color: white;">Results found for <%=name%>:</p>
+        <table>
+            <%users.forEach(user =>{%>
+            <tr>
+                <td><img class="icon-holder" src="<%=user.avatar%>" alt=""></td>
+                <td><a href="/users/<%=user._id%>"><%=user.name%></a></td>
+            </tr>
+            <%})%>
+        </table>
+        <%}%>
+
+
+        <%- include('../partials/footer') %>

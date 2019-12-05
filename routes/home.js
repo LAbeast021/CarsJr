@@ -7,6 +7,7 @@ router.get('/home',isLoggedIn,function(req,res){
         res.render('home',{
             users,
             loggedInUser: req.user,
+            title: 'Home'
         })
     })
   });

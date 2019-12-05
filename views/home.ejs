@@ -9,11 +9,11 @@
 </head>
 <body>
     <div id="navbar">
-        <a href="/logout"> SIGN OUT</a> | 
+        <a href="/logout"><div id="add-photo" class="icon-holder2" style="background-image: url('../images/emergency-exit.png');"></div> </a> | 
         <p>Welcome <%=loggedInUser.name%></p> | 
-        <a href="/users/profile/<%= loggedInUser._id %>"> YOUR PROFILE</a> |
+        <a href="/users/profile/<%= loggedInUser._id %>"><div id="add-photo" class="icon-holder" style="background-image: url('../images/profile-user.png');"></div></a> |
         <a href="/users/profile/<%= loggedInUser._id %>"> <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> |
-        <a href="/posts/new"><div class="icon-holder" style="background-image: url('../public/images/plus.png'); background-color: white;"></div></a>
+        <a href="/posts/new"><div id="add-photo" class="icon-holder" style="background-image: url('../images/plus.png');"></div></a>
     </div>
     
 
@@ -95,3 +95,4 @@
 
 
 <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+<!-- <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->

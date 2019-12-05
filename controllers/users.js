@@ -11,14 +11,18 @@ module.exports = {
 
 function profilePage(req,res){
     res.render('users/profile',{
-      user:req.user
+      user:req.user,
+      loggedInUser: req.user,
+      title: "Profile"
     })
   };
 function userPage (req,res){
     User.findOne({_id: req.params.id}, function(err, user){
         console.log(user);
         res.render('users/user',{
-            user
+            user,
+            loggedInUser: req.user,
+            title: "User Profile"
         })
     })
 }

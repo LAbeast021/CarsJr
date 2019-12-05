@@ -2,6 +2,7 @@
     <%- include('./partials/header') %>
     
     
+    
 
     <% users.forEach (user => { %>
         <% if (user.posts.length){ %>
@@ -60,11 +61,10 @@
                 </div>
 
                 <div id="new-comment-holder">
-                        <form action="/posts/comment/<%= user._id%>?postId=<%= post._id %>" method="POST">
-                            <input type="text" placeholder="comment" name="comment">
-                            <input type="submit" value="ADD THE COMMENT">  
+                        <form id="new-comment-form" action="/posts/comment/<%= user._id%>?postId=<%= post._id %>" method="POST">
+                            <input style=" margin-left: .5%;" required id="comment-input" type="text" placeholder="comment ..." name="comment">
+                            <button type="submit"> ✉ </button>
                         </form>
-                    </div>
             <% }) ;%>    
 
 

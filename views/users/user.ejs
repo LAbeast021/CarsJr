@@ -1,19 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel='stylesheet' href='/stylesheets/main.css' />
-    <title>Document</title>
-</head>
-<body>
-   <h1><%= user.name%></h1>
-    <h1><%= user.email%></h1>
-   <img src="<%= user.avatar%>" alt="profile pic">
-    <h1> GOOGLE ID = <%= user.googleId%></h1>
-    <h1> MONGOOSE ID = <%= user._id%></h1>
+<%- include('../partials/header') %>
+<% user.posts.forEach ( post => {%>
+    <div id="post-holder" style="margin-top: 1%; width: 80%; margin-left: 10%;">
+        <div id="post" style="background-image: url('<%= post.image %>');"></div>
+        <div id="caption-holder">
+
+            <h1>Brand</h1>
+            <h4><%= post.brand%></h4>
+            <h1>Model</h1>
+            <h4><%= post.model%></h4>
+            <h1>Year</h1>
+            <h4><%= post.year %></h4>
+            <h1> Horse Power </h1>
+            <h4><%= post.horsePower%></h4>
+            <h4> <%= post.caption%></h4>
+
+        </div>
+    </div>
+    <div id="comments-holder">
+        <% if (post.comments.length){%>
+            <%post.comments.forEach ((comment, index) => {%>
+                <% if (comment.visitorId == loggedInUser._id){%>
+                    <div id="logged-in-user-comment">
+
+                        <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a>
+                        <a href="/users/profile/<%= loggedInUser._id%>"> <%= loggedInUser.name%></a>
+                        <p> <%= comment.comment%></p>
+                        <form action="/posts/comment/<%= user._id%>?_method=DELETE&postId=<%= post._id%>&commentIdx=<%= index %>" method="POST">
+                            <input type="submit" value="✘" style=" color: red;">
+                        </form>
+
+                    </div>
+                <%} 
+
+                else {%>
+
+                    <div id="other-users-comment">
+                        <div class="icon-holder" style="background-image: url('<%= comment.visitorAvatar %>');"></div></a>
+                        <a href="/users/<%= comment.visitorId%>"> <%= comment.visitorName%> </a>
+                        <p> <%= comment.comment%></p>
+                    </div>
+
+                <% }%>
+
+            <%})%>
+        <%};%>
+    </div>
+
+    <div id="new-comment-holder" style="width: 80%; margin-left:10% ; margin-top: 1%;">
+            <form id="new-comment-form" action="/posts/comment/<%= user._id%>?postId=<%= post._id %>" method="POST">
+                <input required id="comment-input" type="text" placeholder="comment ..." name="comment">
+                <button type="submit"> ✉ </button>
+            </form>
+        </div>
+<% }) ;%>    
    
-    
-</body>
-</html>
+<%- include('../partials/footer') %>

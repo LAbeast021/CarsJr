@@ -1,62 +1,79 @@
 <%- include('../partials/header') %>
 <style>
-        body{
-            background: black;
-        }
-    </style>
-<% user.posts.forEach ( post => {%>
+    body {
+        background: black;
+    }
+</style>
+<div id="profile-bio-section">
+    
+</div>
+<%if (user.posts.length){%>
+<% user.posts.forEach ( (post, postIdx) => {%>
+<div id="post-container">
     <div id="post-holder" style="margin-top: 1%; width: 80%; margin-left: 10%;">
         <div id="post" style="background-image: url('<%= post.image %>');"></div>
         <div id="caption-holder">
 
             <h1>Brand</h1>
-            <h4><%= post.brand%></h4>
+            <h2><%= post.brand%></h2>
             <h1>Model</h1>
-            <h4><%= post.model%></h4>
+            <h2><%= post.model%></h2>
             <h1>Year</h1>
-            <h4><%= post.year %></h4>
+            <h2><%= post.year %></h2>
             <h1> Horse Power </h1>
-            <h4><%= post.horsePower%></h4>
-            <h4> <%= post.caption%></h4>
+            <h2><%= post.horsePower%></h2>
+            <h3> <%= post.caption%></h3>
 
         </div>
     </div>
     <div id="comments-holder">
         <% if (post.comments.length){%>
-            <%post.comments.forEach ((comment, index) => {%>
-                <% if (comment.visitorId == loggedInUser._id){%>
-                    <div id="logged-in-user-comment">
+        <%post.comments.forEach ((comment, index) => {%>
+        <% if (comment.visitorId == loggedInUser._id){%>
+        <div class="logged-in-user-comment">
+            <div class="commenter-information">
+                <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a>
+                <a href="/users/profile/<%= loggedInUser._id%>"> <%= loggedInUser.name%></a>
+                <span style="color: red; font-size: 20px;"> : </span>
+            </div>
+            <p style="border: 2px solid red; width: 85%;"> <%= comment.comment%></p>
+            <form class="comment-delete-form"
+                action="/posts/comment/<%= user._id%>?_method=DELETE&postId=<%= post._id%>&commentIdx=<%= index %>"
+                method="POST">
+                <input type="submit" value="✘" style=" color: red;">
+            </form>
 
-                        <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a>
-                        <a href="/users/profile/<%= loggedInUser._id%>"> <%= loggedInUser.name%></a>
-                        <p> <%= comment.comment%></p>
-                        <form action="/posts/comment/<%= user._id%>?_method=DELETE&postId=<%= post._id%>&commentIdx=<%= index %>" method="POST">
-                            <input type="submit" value="✘" style=" color: red;">
-                        </form>
-
-                    </div>
-                <%} 
+        </div>
+        <%} 
 
                 else {%>
 
-                    <div id="other-users-comment">
-                        <div class="icon-holder" style="background-image: url('<%= comment.visitorAvatar %>');"></div></a>
-                        <a href="/users/<%= comment.visitorId%>"> <%= comment.visitorName%> </a>
-                        <p> <%= comment.comment%></p>
-                    </div>
+        <div class="logged-in-user-comment">
+            <div class="commenter-information">
+                <div class="icon-holder" style="background-image: url('<%= comment.visitorAvatar %>');"></div></a>
+                <a href="/users/<%= comment.visitorId%>"> <%= comment.visitorName%> </a>
+                <span style="color: red; font-size: 20px;"> : </span>
+            </div>
+            <p style="border: 2px solid red; width: 88%;"> <%= comment.comment%></p>
+            <!-- <p> <%= comment.comment%></p> -->
+        </div>
 
-                <% }%>
+        <% }%>
 
-            <%})%>
+        <%})%>
         <%};%>
     </div>
 
     <div id="new-comment-holder" style="width: 80%; margin-left:10% ; margin-top: 1%;">
-            <form id="new-comment-form" action="/posts/comment/<%= user._id%>?postId=<%= post._id %>" method="POST">
-                <input required id="comment-input" type="text" placeholder="comment ..." name="comment">
-                <button type="submit"> ✉ </button>
-            </form>
-        </div>
-<% }) ;%>    
+        <form id="new-comment-form" action="/posts/comment/<%= user._id%>?postId=<%= post._id %>" method="POST">
+            <input required id="comment-input" type="text" placeholder="comment ..." name="comment">
+            <button type="submit"> ✉ </button>
+        </form>
+    </div>
+</div>
+<% }) ;%>
+<%} else {%>
+<h1 style="margin: 20% 50%; color: teal;">NO POSTS YET</h1>
+<%}%>
    
 <%- include('../partials/footer') %>

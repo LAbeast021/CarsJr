@@ -7,9 +7,29 @@ body{
 /* ///////////////// NAV BAR ITEMS ↴ */
 #navbar{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     background: rgb(88, 86, 86);
+    margin-top: 1%;
+}
+#left-nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+}
+#center-nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    /* margin-left: 1%; */
+}
+#right-nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
 }
 #post-container{
     height: auto;
@@ -46,6 +66,10 @@ body{
     cursor: pointer;
     background-color: rgba(112, 209, 233, 0);
 }
+.icon-holder4:hover{
+    cursor: pointer;
+   color: rgba(117, 130, 133, 0.966);
+}
 
 
 .icon-holder4{
@@ -54,12 +78,9 @@ body{
     text-decoration: none;
     
 }
-.icon-holder4:hover{
-    color: palegreen;
-}
 /* ///////////////// EACH POST TEMPLATE ↴ */
 #user-information{
-    background: orange;
+    background: rgb(109, 190, 204);
     width: 100%;
     display: flex;
     justify-content:start;
@@ -91,6 +112,7 @@ body{
     align-items: center;
     justify-content: space-around;
     background: rgb(88, 86, 86);
+    border: 4px solid rgb(241, 226, 11);
 }
 #post{
     background: rgba(235, 235, 226, 0.705);
@@ -105,7 +127,7 @@ body{
     grid-template-columns: auto auto;
     justify-content: space-between;
     width: 500px;
-    height: 400px;
+    height: 93%;
     background: rgba(128, 128, 128, 0.486);
     box-shadow: 5px 5px black;
 }
@@ -118,6 +140,7 @@ body{
     /* margin-top: -1.2%; */
     /* background: hotpink;
 } */
+/* ////////////////// COMMENTS SECTION //////////////////////// */
 #comment-input{
     width: 95%;
     height: 50px;
@@ -137,6 +160,38 @@ body{
     font-size: 50px;
     background: chartreuse;
 }
+#new-comment-form > button :hover{
+    background: black;
+    color: chartreuse;
+    cursor: pointer;
+}
+.logged-in-user-comment{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 50px;
+    margin-left: 10%;
+    background-color: rgb(118, 180, 180);
+    color: darkmagenta;
+    border: 1px solid rgb(177, 119, 119);
+    color: white;
+}
+.commenter-information{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 12%;
+    border:2px solid darkmagenta;
+}
+.comment-delete-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   border: 2px solid green;
+   width: 3%;
+   align-items: center;
+}
 /* ////////////////////////////// NEW POST PAGE ////////////////////////// */
 #file-loader{
     margin: 2%;
@@ -150,5 +205,14 @@ body{
     margin: 2% 7%;
 }
 /* ////////////////////////////// PROFILE PAGE /////////////////////////////////// */
+#profile-bio-section{
+    width: 70%;
+    height: 80px;
+    border: 5px solid rgb(101, 165, 101);
+    border-radius: 20%;
+    margin-left: 15%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
 
 /* ////////////////////////////// USER PROFILE PAGE ///////////////////////////// */

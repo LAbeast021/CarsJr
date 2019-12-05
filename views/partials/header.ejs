@@ -8,64 +8,26 @@
     <title>home</title>
 </head>
 <body>
-    <% if (title === "Home"){%>
-    <div id="navbar">
-            <a href="/logout"><div class="add-photo icon-holder2"  style="background-image: url('../images/emergency-exit.png');"></div> </a> | 
-            <p>Welcome <%=loggedInUser.name%></p> | 
-            <a href="/users/profile/<%= loggedInUser._id %>"><div class="add-photo icon-holder" style="background-image: url('../images/profile-user.png');"></div></a> |
-            <a href="/users/profile/<%= loggedInUser._id %>"> <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> |
-            <a href="/posts/new"><div class="add-photo icon-holder"  style="background-image: url('../images/plus.png');"></div></a> |
-            <form action="/search" method="GET">
-                <input  type="search" name="userName" placeholder="search by username..."> 
-                <button class="add-photo icon-holder3"  style="background-image: url('../images/magnifying-glass.png'); " type="submit" ></button>
-            </form>
-        </div>
-        <%}%>
+        <div id="navbar">
 
-        <% if (title === "Search"){%>
-
-            <div id="navbar">
-                    <a href="/logout"><div class="add-photo icon-holder2"  style="background-image: url('../images/emergency-exit.png');"></div> </a> | 
-                    <p>Welcome <%=loggedInUser.name%></p> | 
-                    <a href="/users/profile/<%= loggedInUser._id %>"><div class="add-photo icon-holder" style="background-image: url('../images/profile-user.png');"></div></a> |
-                    <!-- <a href="/home"><div class="add-photo icon-holder4" style="background-image: url('../images/home.png');"></div></a> | -->
-                    <a class="icon-holder4" href="/home">♡</a> |
-                    <a href="/users/profile/<%= loggedInUser._id %>"> <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> |
-                    <a href="/posts/new"><div class="add-photo icon-holder"  style="background-image: url('../images/plus.png');"></div></a> |
-                    <form action="/search" method="GET">
-                        <input  type="search" name="userName" placeholder="search by username..."> 
-                        <button class="add-photo icon-holder3"  style="background-image: url('../images/magnifying-glass.png'); " type="submit" ></button>
-                    </form>
-                </div>
-
-        <%}%>
-        <% if (title === "Profile"){%>
-            <div id="navbar">
+                <div id="left-nav">
                     <a href="/users/profile/<%= loggedInUser._id %>"> <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> 
-                    <p>Welcome <%=loggedInUser.name%></p> | 
+                    <p>Welcome <%=loggedInUser.name%></p> 
+                </div> 
+                    <span>|</span>
+                <div id="center-nav">
                     <a href="/users/profile/<%= loggedInUser._id %>"><div class="add-photo icon-holder" style="background-image: url('../../images/profile-user.png');"></div></a> |
                     <!-- <a href="/home"><div class="add-photo icon-holder4" style="background-image: url('../images/home.png');"></div></a> | -->
-                    <a class="icon-holder4" href="/home">♛</a> |
+                    <a  class="icon-holder4" href="/home">♛</a> |
                     <a href="/posts/new"><div class="add-photo icon-holder"  style="background-image: url('../../images/plus.png');"></div></a> |
+                </div>
+
+                <div id="right-nav">
                     <form action="/search" method="GET">
                         <input  type="search" name="userName" placeholder="search by username..."> 
                         <button class="add-photo icon-holder3"  style="background-image: url('../../images/magnifying-glass.png'); " type="submit" ></button>
-                    </form> |
+                    </form> 
                     <a href="/logout"><div class="add-photo icon-holder2"  style="background-image: url('../../images/emergency-exit.png');"></div> </a>
                 </div>
-        <%}%>
-        <% if (title === "User Profile"){%>
-            <div id="navbar">
-                    <a href="/logout"><div class="add-photo icon-holder2"  style="background-image: url('../../images/emergency-exit.png');"></div> </a> | 
-                    <p>Welcome <%=loggedInUser.name%></p> | 
-                    <a href="/users/profile/<%= loggedInUser._id %>"><div class="add-photo icon-holder" style="background-image: url('../../images/profile-user.png');"></div></a> |
-                    <!-- <a href="/home"><div class="add-photo icon-holder4" style="background-image: url('../images/home.png');"></div></a> | -->
-                    <a class="icon-holder4" href="/home">♡</a> |
-                    <a href="/users/profile/<%= loggedInUser._id %>"> <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> |
-                    <a href="/posts/new"><div class="add-photo icon-holder"  style="background-image: url('../../images/plus.png');"></div></a> |
-                    <form action="/search" method="GET">
-                        <input  type="search" name="userName" placeholder="search by username..."> 
-                        <button class="add-photo icon-holder3"  style="background-image: url('../../images/magnifying-glass.png'); " type="submit" ></button>
-                    </form>
                 </div>
-        <%}%>
+   

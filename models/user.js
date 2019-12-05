@@ -14,7 +14,7 @@ var postSchema = new Schema({
     image: String,
     brand:String,
     model: String,
-    year: Date,
+    year: String,
     horsePower: Number,
     caption: String,
     comments:[commentSchema]

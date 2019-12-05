@@ -13,9 +13,7 @@ router.get('/home',isLoggedIn,function(req,res){
   
   function isLoggedIn(req, res,next){
     if(req.isAuthenticated()){
-      console.log(req.isAuthenticated);
       return next();}
-    console.log("kose babr afrighayi")
     res.redirect('/auth/google')
 }
 

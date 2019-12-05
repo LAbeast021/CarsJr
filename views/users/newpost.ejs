@@ -5,24 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/main.css" />
     <title>Document</title>
+
 </head>
 <body>
    <form action="/posts/upload" method="POST" id="creatin-post-form" enctype="multipart/form-data">
+<!-- ///////////////////// IMAGE FILE ///////////////////////////////// -->
+    <div>
+        <input type="file"   name="image" id="file-loader"  > 
+    </div>
+<!-- ///////////////////// BRAND ////////////////////////////////////// -->
+    <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Select The Brand </label>
+            </div>
+    <select name="brand" class="custom-select" id="inputGroupSelect01" >
+        <% cars.forEach (car =>{%>
+        
+            <option value="<%= car.name%>"> <%= car.name %></option>
 
-        <input type="file"  name="image" id="file-loader" placeholder="upload a car pic">
-
-
-       <select name="brand" class="custom-select" id="inputGroupSelect01">
-           <% cars.forEach (car =>{%>
-            
-                <option value="<%= car.name%>"> <%= car.name %></option>
-
-            <%})%>
-       </select>
-
-
+        <%})%>
+    </select>
+    </div>
+<!-- ////////////////// MODEL //////////////////////////////////// -->
+<div class="input-group mb-3 model">
+<div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Select The Brand </label>
         <input type="text" name="model" placeholder="model">
+    </div>
+</div>
+<!-- ///////////////// YEAR ////////////////////////// -->
 
         <select name="year" id="inputGroupSelect02" >
             <% for (i=new Date().getFullYear() ; i >= 1960 ; i--){%>

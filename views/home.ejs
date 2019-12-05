@@ -13,7 +13,12 @@
         <p>Welcome <%=loggedInUser.name%></p> | 
         <a href="/users/profile/<%= loggedInUser._id %>"><div id="add-photo" class="icon-holder" style="background-image: url('../images/profile-user.png');"></div></a> |
         <a href="/users/profile/<%= loggedInUser._id %>"> <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a> |
-        <a href="/posts/new"><div id="add-photo" class="icon-holder" style="background-image: url('../images/plus.png');"></div></a>
+        <a href="/posts/new"><div id="add-photo" class="icon-holder" style="background-image: url('../images/plus.png');"></div></a> |
+        <form action="/search" method="GET">
+            <input  type="search" name="userName" placeholder="search by username..."> 
+            <button id="add-photo" class="icon-holder" style="background-image: url('../images/magnifying-glass.png'); " type="submit" ></button>
+        
+        </form>
     </div>
     
 

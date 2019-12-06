@@ -31,7 +31,7 @@ function createPost (req, res){
        req.body.image = req.file.secure_url
        req.body.postWidth = req.file.width
        req.body.postHight = req.file.height
-       user.posts.push(req.body)
+       user.posts.unshift(req.body)
        user.save(function(err){
            res.redirect(`/users/profile/${req.user._id}`);
        })

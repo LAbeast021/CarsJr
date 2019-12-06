@@ -26,17 +26,9 @@
                 <div id="post-holder">
                     <div id="post-pic"><img id="image" src="<%= post.image%>" alt=""></div>
                     <div id="caption-holder">
-
-                        <h1>Brand</h1>
-                        <h4><%= post.brand%></h4>
-                        <h1>Model</h1>
-                        <h4><%= post.model%></h4>
-                        <h1>Year</h1>
-                        <h4><%= post.year %></h4>
-                        <h1> Horse Power </h1>
-                        <h4><%= post.horsePower%></h4>
-                        <h4> <%= post.caption%></h4>
-
+                            <div id="car-information"><h2> <span><%= post.brand%> </span><span> <%= post.model%> </span><span> <%= post.year%><h2></span>
+                        <h2><%= post.horsePower %> hp  <span> <%= post.engine %></h2></span></div>
+                        <h2><%= post.caption%></h2>    
                     </div>
                 </div>
                 <div  id="comments-holder">

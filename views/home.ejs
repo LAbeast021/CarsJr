@@ -7,6 +7,7 @@
     #navbar{
            margin-bottom: 1%;
         }
+        
     </style>
     
     
@@ -17,7 +18,7 @@
             <div id="post-container">
                 <div id="user-information">
                     <div id="profile-pic" style="background-image: url('<%= user.avatar%>');" ></div>
-                    <a href="/users/<%= user._id%>"> <h2><%= user.name%></h2></a>
+                    <a style="color: white; text-decoration: none;" href="/users/<%= user._id%>"> <h2><%= user.name%></h2></a>
                 </div>
 
 
@@ -45,10 +46,10 @@
                                     <div class="logged-in-user-comment" style="width: 100%; margin-left: 0;">
                                             <div class="commenter-information">
                                                 <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a>
-                                                <a href="/users/profile/<%= loggedInUser._id%>"> <%= loggedInUser.name%></a>
+                                                <a style="color: white; text-decoration: none;" href="/users/profile/<%= loggedInUser._id%>"> <%= loggedInUser.name%></a>
                                                 <span style="color: red; font-size: 20px;"> : </span>
                                             </div>
-                                        <p style="border: 2px solid red; width: 85%;"> <%= comment.comment%></p>
+                                        <p style=" width: 85%; margin-left: 1%;"> <%= comment.comment%></p>
                                         <form class="comment-delete-form" action="/posts/comment/<%= user._id%>?_method=DELETE&postId=<%= post._id%>&commentIdx=<%= index %>" method="POST">
                                             <input type="submit" value="✘" style=" color: red;">
                                         </form>
@@ -61,10 +62,10 @@
                                     <div class="logged-in-user-comment" style="width: 100%; margin-left: 0;">
                                         <div class="commenter-information" >
                                         <div class="icon-holder" style="background-image: url('<%= comment.visitorAvatar %>');"></div></a>
-                                        <a href="/users/<%= comment.visitorId%>"> <%= comment.visitorName%> </a>
+                                        <a style="color: white; text-decoration: none;" href="/users/<%= comment.visitorId%>"> <%= comment.visitorName%> </a>
                                         <span style="color: red; font-size: 20px;"> : </span>
                                     </div>
-                                    <p style="border: 2px solid red; width: 88%;"> <%= comment.comment%></p>
+                                    <p style=" width: 88%; margin-left: 1%;"> <%= comment.comment%></p>
                                         <!-- <p> <%= comment.comment%></p> -->
                                     </div>
                 

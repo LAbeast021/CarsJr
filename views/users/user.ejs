@@ -34,42 +34,42 @@
     </div>
 </div>
 <div id="comments-holder">
-    <% if (post.comments.length){%>
-    <%post.comments.forEach ((comment, index) => {%>
-    <% if (comment.visitorId == loggedInUser._id){%>
-    <div class="logged-in-user-comment">
-        <div class="commenter-information">
-            <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a>
-            <a href="/users/profile/<%= loggedInUser._id%>"> <%= loggedInUser.name%></a>
-            <span style="color: red; font-size: 20px;"> : </span>
+        <% if (post.comments.length){%>
+        <%post.comments.forEach ((comment, index) => {%>
+        <% if (comment.visitorId == loggedInUser._id){%>
+        <div class="logged-in-user-comment">
+            <div class="commenter-information">
+                <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a>
+                <a style="color: white; text-decoration: none;" href="/users/profile/<%= loggedInUser._id%>"> <%= loggedInUser.name%></a>
+                <span style="color: red; font-size: 20px;"> : </span>
+            </div>
+            <p style="margin-left: .5%; width: 85%;"> <%= comment.comment%></p>
+            <form class="comment-delete-form"
+                action="/posts/comment/<%= user._id%>?_method=DELETE&postId=<%= post._id%>&commentIdx=<%= index %>"
+                method="POST">
+                <input type="submit" value="✘" style=" color: red;">
+            </form>
+
         </div>
-        <p style="border: 2px solid red; width: 85%;"> <%= comment.comment%></p>
-        <form class="comment-delete-form"
-            action="/posts/comment/<%= user._id%>?_method=DELETE&postId=<%= post._id%>&commentIdx=<%= index %>"
-            method="POST">
-            <input type="submit" value="✘" style=" color: red;">
-        </form>
+        <%} 
 
-    </div>
-    <%} 
-    
-                    else {%>
+                else {%>
 
-    <div class="logged-in-user-comment">
-        <div class="commenter-information">
-            <div class="icon-holder" style="background-image: url('<%= comment.visitorAvatar %>');"></div></a>
-            <a href="/users/<%= comment.visitorId%>"> <%= comment.visitorName%> </a>
-            <span style="color: red; font-size: 20px;"> : </span>
+        <div class="logged-in-user-comment">
+            <div class="commenter-information">
+                <div class="icon-holder" style="background-image: url('<%= comment.visitorAvatar %>');"></div></a>
+                <a style="color: white; text-decoration: none;" href="/users/<%= comment.visitorId%>"> <%= comment.visitorName%> </a>
+                <span style="color: red; font-size: 20px;"> : </span>
+            </div>
+            <p style="border: 2px solid red; width: 88%;"> <%= comment.comment%></p>
+            <!-- <p> <%= comment.comment%></p> -->
         </div>
-        <p style="border: 2px solid red; width: 88%;"> <%= comment.comment%></p>
-        <!-- <p> <%= comment.comment%></p> -->
+
+        <% }%>
+
+        <%})%>
+        <%};%>
     </div>
-
-    <% }%>
-
-    <%})%>
-    <%};%>
-</div>
 
 <div id="new-comment-holder" style="width: 80%; margin-left:10% ; margin-top: 1%;">
     <form id="new-comment-form" action="/posts/comment/<%= user._id%>?postId=<%= post._id %>" method="POST">

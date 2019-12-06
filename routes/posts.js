@@ -9,7 +9,6 @@ var storage = cloudinaryStorage({
         cb(null, new Date().toISOString() + file.originalname );
       },
     allowedFormats: ["jpg", "jpeg", "png"],
-    transformation: [{ width: 500, height: 500, crop: "limit" }]   
 });
 var upload = multer({storage})
 var postsCtrl = require('../controllers/posts');

@@ -12,9 +12,12 @@ var commentSchema = new Schema ({
 
 var postSchema = new Schema({
     image: String,
+    postWidth:Number,
+    postHeight:Number,
     brand:String,
     model: String,
     year: String,
+    engine:String,
     horsePower: Number,
     caption: String,
     comments:[commentSchema]

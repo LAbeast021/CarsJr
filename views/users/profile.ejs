@@ -23,7 +23,7 @@
 <% user.posts.forEach ( (post, postIdx) => {%>
 <div id="post-container">
     <div id="post-holder" style="margin-top: 1%; width: 80%; margin-left: 10%;">
-        <div id="post" style="background-image: url('<%= post.image %>');"></div>
+        <div id="post-pic"><img id="image" src="<%= post.image%>" alt=""></div>
         <div id="caption-holder">
 
             <h1>Brand</h1>
@@ -34,6 +34,8 @@
             <h2><%= post.year %></h2>
             <h1> Horse Power </h1>
             <h2><%= post.horsePower%></h2>
+            <h1> Engine </h1>
+            <h2><%= post.engine%></h2>
             <h3> <%= post.caption%></h3>
 
         </div>

@@ -16,7 +16,10 @@ module.exports = {
 function newPost (req,res){
     request(URL , function(err, response, body){
         var cars = JSON.parse(body);
-        res.render('users/newpost',{cars})
+        request(url2 ,function(err , response , body){
+            var models = JSON.parse(body);
+            res.render('users/newpost',{cars,models})
+        } )
     })
 }
 
@@ -24,11 +27,13 @@ function newPost (req,res){
 // //////////////////
 function createPost (req, res){
    User.findOne({_id: req.user._id},function(err, user){
-       console.log(user);
+       console.log(req.file);
        req.body.image = req.file.secure_url
+       req.body.postWidth = req.file.width
+       req.body.postHight = req.file.height
        user.posts.push(req.body)
        user.save(function(err){
-           res.redirect('/home');
+           res.redirect(`/users/profile/${req.user._id}`);
        })
    })
 }

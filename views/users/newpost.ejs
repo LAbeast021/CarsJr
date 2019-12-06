@@ -28,21 +28,25 @@
         <%})%>
     </select>
     </div>
-<!-- ////////////////// MODEL //////////////////////////////////// -->
-<div class="input-group mb-3 model">
-<div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Select The Brand </label>
-        <input type="text" name="model" placeholder="model">
-    </div>
-</div>
+<!-- /////////////// ////// model //////////////////////////////////// -->
+<select name="model" >
+        <% models.forEach (model =>{%>
+            <option value="<%= model.model%>"> <%= model.model %></option>
+        <%})%>
+</select>
+    <br>
 <!-- ///////////////// YEAR ////////////////////////// -->
 
-        <select name="year" id="inputGroupSelect02" >
+        <select id="year-dropdown" name="year" >
             <% for (i=new Date().getFullYear() ; i >= 1960 ; i--){%>
                 <option  value="<%= i%>"> <%= i%></option>
             <%};%>
-        </select>   
+        </select>  
+         <!--///////////// Engine //////////////////  -->
+         <input type="text" name="engine" placeholder="Engine Type">
+         <!-- /////////////// HP //////////////////// -->
         <input type="number" name="horsePower" placeholder="horse power">
+        <!-- //////////////// Caption /////////////////// -->
         <input type="text" name="caption" placeholder="caption">
         <input type="submit" value="submit the pic">
 

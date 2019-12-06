@@ -6,7 +6,6 @@ router.get('/', function ( req, res ){
     var modelQuery = req.query.userName ? {name: new RegExp(req.query.userName, 'i')} : {};
     let sortKey = req.query.sort || 'name';
     User.find(modelQuery, function(err, users){
-            console.log('req.quer: ', users)
             if(err) return next(err);
             res.render('users/search',{
                 users,

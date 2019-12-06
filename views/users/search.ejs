@@ -1,19 +1,30 @@
 
     <%- include('../partials/header') %>
+    <style>
+    body{
+        background: black;
+    }
+    </style>
 
         <%if(!users.length){%>
-            <p style="color: white;">Sorry nothing found</p>
+            <h1 style="color: white;">Sorry nothing found</h1>
         <%} else {%>
-        <p style="color: white;">Results found for <%=name%>:</p>
+        <h1 style="color: white;">Results found for <%=name%>:</h1>
         <table>
             <%users.forEach(user =>{%>
-            <tr>
-                <td><img class="icon-holder" src="<%=user.avatar%>" alt=""></td>
-                <td><a href="/users/<%=user._id%>"><%=user.name%></a></td>
-            </tr>
+                <div style="display: flex; justify-content: space-between; border: 5px solid greenyellow;">
+                    <div style="display: flex; justify-content: space-around; align-items: center; width: 300px;">
+                            <div><img class="icon-holder" src="<%=user.avatar%>" alt=""></div>
+                            <h3><a href="/users/<%=user._id%>"><%=user.name%></a></h3>
+
+                    </div>
+                    <p style="padding-right:2% ; color: white;"><%= user.posts.length%> posts</p>
+                </div>
+            
             <%})%>
         </table>
         <%}%>
 
 
         <%- include('../partials/footer') %>
+

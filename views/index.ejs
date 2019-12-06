@@ -3,11 +3,21 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
   </head>
   <body>
+    <style>
+      #login:hover{
+        color: green;
+        font-weight: 800;
+        text-shadow: 3px 3px 3px black;
+        font-size: 25px;
+      }
+      </style>
     <!-- <img src="images/Road.jpg" alt="image not showing"> -->
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="/auth/google"> LOGIN </a>
+    
+    <h1 style="font-family: 'Lobster', cursive;">Welcome to </h1>
+    <h1 style="font-family: 'Lobster', cursive; margin: 4%; font-size: 200px;"><%= title %></h1>
+    <a id="login" style="font-size: 20px; text-decoration: none;" href="/auth/google"> LOGIN in with Google <span style="font-size: 60px; text-decoration: none;">&#10157</span> </a>
   </body>
 </html>

@@ -248,5 +248,13 @@ body{
 #user-username{
     color: white;
 }
+#remove{
+    color: rgb(12, 34, 233);
+}
+#remove:hover{
+    font-size: 30px;
+    color: rgb(182, 28, 8);
+    cursor: pointer;
+}
 
 /* ////////////////////////////// USER PROFILE PAGE ///////////////////////////// */

@@ -26,9 +26,9 @@
                 <div id="post-holder">
                     <div id="post-pic"><img id="image" src="<%= post.image%>" alt=""></div>
                     <div id="caption-holder">
-                            <div id="car-information"><h2> <span><%= post.brand%> </span><span> <%= post.model%> </span><span> <%= post.year%><h2></span>
-                        <h2><%= post.horsePower %> hp  <span> <%= post.engine %></h2></span></div>
-                        <h2><%= post.caption%></h2>    
+                            <div id="car-information"><h2 style="font-size: 35px;font-family: 'Arvo', serif;"> <span><%= post.brand%> </span><span> <%= post.model%> </span><span> <%= post.year%><h2></span>
+                        <h2 style="font-family: 'Arvo', serif;font-size: 30px;"><%= post.horsePower %> hp  <span> <%= post.engine %></h2></div>
+                        <h2 style="font-family: 'Arvo', serif;"><%= post.caption%></h2>    
                     </div>
                 </div>
                 <div  id="comments-holder">
@@ -43,7 +43,7 @@
                                             </div>
                                         <p style=" width: 85%; margin-left: 1%;"> <%= comment.comment%></p>
                                         <form class="comment-delete-form" action="/posts/comment/<%= user._id%>?_method=DELETE&postId=<%= post._id%>&commentIdx=<%= index %>" method="POST">
-                                            <input type="submit" value="✘" style=" color: red;">
+                                            <input id="remove" type="submit" value="✘" >
                                         </form>
                 
                                     </div>

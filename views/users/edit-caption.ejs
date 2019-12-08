@@ -9,12 +9,20 @@
 <style>
 body{
     background: black;
-}</style>
+}
+#updating-caption:hover{
+cursor: pointer;
+
+}
+</style>
 <body>
-    <div style="border: 5px solid green; width: 40%;height: 100px; display: flex; align-items: center; justify-content: space-around; margin: 20% 30%;">
+    <div style=" width: 40%;height: 100px; display: flex; align-items: center; justify-content: space-around; margin: 20% 30%;">
    <form action="/posts/edit/<%= idx%>" method="POST">
     <input style="width: 100%; height: 50px; font-size: 20px;" type="text" name="caption" value="<%= value%>">
-    <input style="width: 100%; height: 30px; font-size: 30px;color: rgb(165, 207, 123);" type="submit" value="Update the Caption ✓">
+    <div>
+    <input id="updating-caption" style="width: 50%; height: 30px; font-size: 25px;color: rgb(107, 184, 31);" type="submit" value=" ✓">
+    <a style="width: 200px; border: 2px solid red; height: 30px; font-size: 20px; color: red;" href="/users/profile/<%= id %>">  ✘</a>
+    </div>
     </form>
 </div>
     

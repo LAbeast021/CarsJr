@@ -26,7 +26,8 @@ router.get('/edit/:id',isLoggedIn ,function(req,res){
     var value = user.posts[req.params.id].caption
     res.render('users/edit-caption',{
       idx:req.params.id,
-      value
+      value,
+      id: req.user._id
     })
   })
 })

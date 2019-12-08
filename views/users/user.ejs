@@ -29,7 +29,7 @@
         <% if (post.comments.length){%>
         <%post.comments.forEach ((comment, index) => {%>
         <% if (comment.visitorId == loggedInUser._id){%>
-        <div class="logged-in-user-comment">
+        <div class="logged-in-user-comment" style="border-bottom: 2px solid rgb(0, 0, 0);">
             <div class="commenter-information">
                 <div class="icon-holder" style="background-image: url('<%= loggedInUser.avatar %>');"></div></a>
                 <a style="color: white; text-decoration: none;" href="/users/profile/<%= loggedInUser._id%>"> <%= loggedInUser.name%></a>
@@ -47,13 +47,13 @@
 
                 else {%>
 
-        <div class="logged-in-user-comment">
+        <div class="logged-in-user-comment" style="border-bottom: 2px solid rgb(0, 0, 0);">
             <div class="commenter-information">
                 <div class="icon-holder" style="background-image: url('<%= comment.visitorAvatar %>');"></div></a>
                 <a style="color: white; text-decoration: none;" href="/users/<%= comment.visitorId%>"> <%= comment.visitorName%> </a>
                 <span style="color: red; font-size: 20px;"> : </span>
             </div>
-            <p style="border: 2px solid red; width: 88%;"> <%= comment.comment%></p>
+            <p style="margin-left: .5%; width: 88%;"> <%= comment.comment%></p>
             <!-- <p> <%= comment.comment%></p> -->
         </div>
 

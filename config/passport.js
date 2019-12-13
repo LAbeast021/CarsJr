@@ -27,13 +27,10 @@ passport.use(new GoogleStrategy({
         };
       });
     }));
-
-    
     // ////////  NOT SURE WHAT IT DOES BUT I THINK THEY SET THE USER KEY IN REQ OBJECT ////////////// 
     passport.serializeUser(function(user, done) {
       done(null, user.id);
     });
-    
     passport.deserializeUser(function(id, done) {
       User.findById(id, function(err, user) {
         done(err, user);

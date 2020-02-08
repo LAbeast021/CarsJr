@@ -1,9 +1,13 @@
 body {
-  background-image: url('../images/Road.jpg');
+  background-image: url('../images/asphalt.jpg');
   background-size: 100%;
+  background-color: black;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
   color: rgb(170, 18, 18);
+}
+h1{
+  color: white;
 }

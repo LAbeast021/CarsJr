@@ -13,7 +13,7 @@ module.exports = {
 function profilePage(req,res){
     Post.find({userId: req.user._id},function(err,posts){
         res.render('users/profile',{
-            posts,
+            posts: posts.reverse(),
             loggedInUser: req.user,
             title: "Profile"
         })
@@ -28,7 +28,7 @@ function userPage (req,res){
     Post.find({userId: req.params.id},function(err,posts){
         User.findOne({_id:req.params.id},function(err,user){
             res.render('users/user',{
-                posts,
+                posts: posts.reverse(),
                 user,
                 loggedInUser: req.user,
                 title: "User Profile"

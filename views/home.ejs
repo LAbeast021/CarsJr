@@ -10,19 +10,13 @@
         
     </style>
     
-    
-    
-
-    <% users.forEach (user => { %>
-        <% if (user.posts.length){ %>
+        <% if (posts.length){ %>
+            <% posts.forEach ( (post,postIdx) => {%>
             <div id="post-container">
                 <div id="user-information">
-                    <div id="profile-pic" style="background-image: url('<%= user.avatar%>');" ></div>
-                    <a style="color: white; text-decoration: none;" href="/users/<%= user._id%>"> <h2><%= user.name%></h2></a>
+                    <div id="profile-pic" style="background-image: url('<%= post.userAvatar%>');" ></div>
+                    <a style="color: white; text-decoration: none;" href="/users/<%= post.userId%>"> <h2><%= post.username%></h2></a>
                 </div>
-
-
-            <% user.posts.forEach ( (post,postIdx) => {%>
                 <div id="post-holder">
                     <div id="post-pic"><img id="image" src="<%= post.image%>" alt=""></div>
                     <div id="caption-holder">
@@ -42,7 +36,7 @@
                                                 <span style="color: red; font-size: 20px;"> : </span>
                                             </div>
                                         <p style=" width: 85%; margin-left: 1%;"> <%= comment.comment%></p>
-                                        <form class="comment-delete-form" action="/posts/comment/<%= user._id%>?_method=DELETE&postId=<%= post._id%>&commentIdx=<%= index %>" method="POST">
+                                        <form class="comment-delete-form" action="/posts/comment/<%= post._id%>?_method=DELETE&commentIdx=<%= index %>" method="POST">
                                             <input id="remove" type="submit" value="✘" >
                                         </form>
                 
@@ -58,7 +52,6 @@
                                         <span style="color: red; font-size: 20px;"> : </span>
                                     </div>
                                     <p style=" width: 88%; margin-left: 1%;"> <%= comment.comment%></p>
-                                        <!-- <p> <%= comment.comment%></p> -->
                                     </div>
                 
                                 <% }%>
@@ -68,7 +61,7 @@
                     </div>
 
                 <div id="new-comment-holder">
-                        <form id="new-comment-form" action="/posts/comment/<%= user._id%>?postId=<%= post._id %>" method="POST">
+                        <form id="new-comment-form" action="/posts/comment/<%= post._id%>?postId=<%= post._id %>" method="POST">
                             <input style=" margin-left: .5%;" required id="comment-input" type="text" placeholder="comment ..." name="comment">
                             <button type="submit"> ✉ </button>
                         </form>
@@ -76,13 +69,11 @@
 
 
            
-            <!-- <h1><%= user.email %></h1>
-            <h1> GOOGLE ID = <%= user.googleId %></h1>
-            <h1> MONGOOSE ID = <%= user._id %></h1> -->
+           
 
         </div>
         <%};%>
-    <%});%>
+    
 
 <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
 <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->

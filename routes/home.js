@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var Post = require('../models/post');
 
 router.get('/home',isLoggedIn,function(req,res){
-    User.find({},function(err, users){
+    Post.find({},function(err, posts){
         res.render('home',{
-            users,
+            posts,
             loggedInUser: req.user,
             title: 'Home'
         })

@@ -28,8 +28,11 @@
     </div>
 
 </div>
-<%if (user.posts.length){%>
-<% user.posts.forEach ( (post, postIdx) => {%>
+
+user
+
+<%if (posts.length){%>
+<% posts.forEach ( (post, postIdx) => {%>
 <div id="post-container">
     <div id="post-holder" style="margin-top: 1%; width: 80%; margin-left: 10%;">
         <div id="post-pic"><img id="image" src="<%= post.image%>" alt=""></div>
@@ -53,7 +56,7 @@
             </div>
             <p style="margin-left: .5%; width: 85%;"> <%= comment.comment%></p>
             <form class="comment-delete-form"
-                action="/posts/comment/<%= user._id%>?_method=DELETE&postId=<%= post._id%>&commentIdx=<%= index %>"
+                action="/posts/comment/<%= post._id%>?_method=DELETE&commentIdx=<%= index %>"
                 method="POST">
                 <input id="remove" type="submit" value="✘">
             </form>
@@ -79,7 +82,7 @@
     </div>
 
     <div id="new-comment-holder" style="width: 80%; margin-left:10% ; margin-top: 1%;">
-        <form id="new-comment-form" action="/posts/comment/<%= user._id%>?postId=<%= post._id %>" method="POST">
+        <form id="new-comment-form" action="/posts/comment/<%= post._id%>?postId=<%= post._id %>" method="POST">
             <input required id="comment-input" type="text" placeholder="comment ..." name="comment">
             <button type="submit"> ✉ </button>
         </form>

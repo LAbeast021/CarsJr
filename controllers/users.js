@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Post = require('../models/post');
 // var multer = require('multer');
 // var uploading = multer({dest: 'uploads/'})
 
@@ -10,21 +11,38 @@ module.exports = {
 };
 
 function profilePage(req,res){
-    res.render('users/profile',{
-      user:req.user,
-      loggedInUser: req.user,
-      title: "Profile"
-    })
-  };
-function userPage (req,res){
-    User.findOne({_id: req.params.id}, function(err, user){
-        console.log(user);
-        res.render('users/user',{
-            user,
+    Post.find({userId: req.user._id},function(err,posts){
+        res.render('users/profile',{
+            posts,
             loggedInUser: req.user,
-            title: "User Profile"
+            title: "Profile"
         })
     })
+    // res.render('users/profile',{
+    //   user:req.user,
+    //   loggedInUser: req.user,
+    //   title: "Profile"
+    // })
+  };
+function userPage (req,res){
+    Post.find({userId: req.params.id},function(err,posts){
+        User.findOne({_id:req.params.id},function(err,user){
+            res.render('users/user',{
+                posts,
+                user,
+                loggedInUser: req.user,
+                title: "User Profile"
+            })
+        })
+    })
+    // User.findOne({_id: req.params.id}, function(err, user){
+    //     console.log(user);
+    //     res.render('users/user',{
+    //         user,
+    //         loggedInUser: req.user,
+    //         title: "User Profile"
+    //     })
+    // })
 }
 
 

@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Post = require('../models/post');
 var request = require("request");
 const URL = 'https://private-anon-87a56bcde9-carsapi1.apiary-mock.com/cars'
 const url2  ="https://private-anon-37cbdd5199-carsapi1.apiary-mock.com/cars"
@@ -22,7 +23,7 @@ function newPost (req,res){
                 arr.push(car.make)
             }
         })
-        console.log(arr)
+        // console.log(arr)
         cars = arr
         res.render('users/newpost',{cars})
         // request(url2 ,function(err , response , body){
@@ -34,46 +35,68 @@ function newPost (req,res){
 
 // //////////////////
 function createPost (req, res){
-   User.findOne({_id: req.user._id},function(err, user){
-       console.log(req.file);
-       req.body.image = req.file.secure_url
-       req.body.postWidth = req.file.width
-       req.body.postHight = req.file.height
-       user.posts.unshift(req.body)
-       user.save(function(err){
-           res.redirect(`/users/profile/${req.user._id}`);
-       })
-   })
+    req.body.image = req.file.secure_url;
+    req.body.userId = req.user._id;
+    req.body.username = req.user.name;
+    req.body.userAvatar = req.user.avatar;
+    var newPost = new Post (req.body);
+    newPost.save(function(err, post){
+        res.redirect(`/users/profile/${req.user._id}`);
+    });
+//    User.findOne({_id: req.user._id},function(err, user){
+//        console.log(req.file);
+//        req.body.image = req.file.secure_url
+//        user.posts.unshift(req.body)
+//        user.save(function(err){
+//            res.redirect(`/users/profile/${req.user._id}`);
+//        })
+//    })
 }
 function createComment (req, res){
-    User.findOne({_id: req.params.id}, function(err, user){
-       
-        user.posts.find( post => {
-            if(post._id == req.query.postId){
-                req.body.visitorId = req.user._id
-                req.body.visitorAvatar = req.user.avatar
-                req.body.visitorName = req.user.name
-                post.comments.push(req.body)
-                user.save(function(err){
-                    if (err) console.log(err);
-                }) 
-            }   
+    Post.findOne({_id:req.params.id},function(err, post){
+        console.log(req.user)
+        req.body.visitorId = req.user._id
+        req.body.visitorAvatar = req.user.avatar
+        req.body.visitorName = req.user.name
+        console.log(post,'saaaaaaaag')
+        post.comments.push(req.body)
+        post.save(function(err){
+            res.redirect(`back`);
         })
-        res.redirect(`back`);
     })
+    // User.findOne({_id: req.params.id}, function(err, user){ 
+    //     user.posts.find( post => {
+    //         if(post._id == req.query.postId){
+    //             req.body.visitorId = req.user._id
+    //             req.body.visitorAvatar = req.user.avatar
+    //             req.body.visitorName = req.user.name
+    //             post.comments.push(req.body)
+    //             user.save(function(err){
+    //                 if (err) console.log(err);
+    //             }) 
+    //         }   
+    //     })
+    //     res.redirect(`back`);
+    // })
 };
 function deleteComment (req, res){
-    User.findOne({_id: req.params.id},function(err, user){
-        user.posts.find( post => {
-            if(post._id == req.query.postId){
-                post.comments.splice(req.query.commentIdx , 1)
-            }
-            user.save(function(err){
-                if (err) console.log(err)
-            })
+    Post.findOne({_id : req.params.id},function(err, post){
+        post.comments.splice(req.query.commentIdx , 1)
+        post.save(function(err){
+            res.redirect(`back`);
         })
-        res.redirect(`back`);
     })
+    // User.findOne({_id: req.params.id},function(err, user){
+    //     user.posts.find( post => {
+    //         if(post._id == req.query.postId){
+    //             post.comments.splice(req.query.commentIdx , 1)
+    //         }
+    //         user.save(function(err){
+    //             if (err) console.log(err)
+    //         })
+    //     })
+    //     res.redirect(`back`);
+    // })
 }
 
  // console.log('STEP 1: GETTING TO THE FUNCTION WITH RIGHT INFORMATION', req.body, req.params.id, req.query)

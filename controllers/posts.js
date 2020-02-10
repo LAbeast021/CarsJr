@@ -1,6 +1,6 @@
 var User = require('../models/user');
 var request = require("request");
-const URL = 'https://private-anon-37cbdd5199-carsapi1.apiary-mock.com/manufacturers'
+const URL = 'https://private-anon-87a56bcde9-carsapi1.apiary-mock.com/cars'
 const url2  ="https://private-anon-37cbdd5199-carsapi1.apiary-mock.com/cars"
 // LIST OF MANUFACTORS IN NAME PROPERTY AND ALL CAR MODELS IN MODEL
 
@@ -16,10 +16,18 @@ module.exports = {
 function newPost (req,res){
     request(URL , function(err, response, body){
         var cars = JSON.parse(body);
-        request(url2 ,function(err , response , body){
-            var models = JSON.parse(body);
-            res.render('users/newpost',{cars,models})
-        } )
+        let arr = [];
+        cars.forEach(car => {
+            if(!arr.includes(car.make)){
+                arr.push(car.make)
+            }
+        })
+        console.log(arr)
+        cars = arr
+        res.render('users/newpost',{cars})
+        // request(url2 ,function(err , response , body){
+        //     var models = JSON.parse(body);
+        // } )
     })
 }
 

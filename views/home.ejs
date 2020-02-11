@@ -7,6 +7,18 @@
     #navbar{
            margin-bottom: 1%;
         }
+        #like{
+            border-radius: 50%;
+            width: 100%; 
+            height: 100%; 
+            font-size: 200%;
+            outline: none;
+            
+        }
+        #like:hover{
+            cursor: pointer;
+            
+        }
         
     </style>
     
@@ -19,6 +31,16 @@
                 </div>
                 <div id="post-holder">
                     <div id="post-pic"><img id="image" src="<%= post.image%>" alt=""></div>
+                    <div>
+
+                        <button id="like" style="background-color:<%= post.likes.includes(loggedInUser._id) ? 'red' : 'none' %>;" >
+                            
+                            ❤</button>
+                        
+                        <p style="color: white;">  <%= post.likes.length%> likes</p>
+
+
+                    </div>
                     <div id="caption-holder">
                             <div id="car-information"><h2 style="font-size: 35px;font-family: 'Arvo', serif;"> <span><%= post.brand%> </span><span> <%= post.model%> </span><span> <%= post.year%><h2></span>
                         <h2 style="font-family: 'Arvo', serif;font-size: 30px;"><%= post.horsePower %> hp  <span> <%= post.engine %></h2></div>

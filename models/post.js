@@ -12,8 +12,7 @@ var commentSchema = new Schema ({
 
 var postSchema = new Schema({
     image: String,
-    postWidth:Number,
-    postHeight:Number,
+    likes:[],
     brand:String,
     model: String,
     year: String,

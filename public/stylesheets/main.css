@@ -110,10 +110,13 @@ body{
     0 0 15px 15px hsl(201, 19%, 29%);
 }
 #post-holder{
-    display: grid;
+    /* display: grid;
     grid-template-columns: auto auto;
     align-items: center;
+    justify-content: space-around; */
+    display: flex;
     justify-content: space-around;
+    align-items: center;
     height: 700px;
     background: rgb(88, 86, 86);
     box-shadow: 0 0 5px 5px hsla(225, 88%, 16%, 0.651),

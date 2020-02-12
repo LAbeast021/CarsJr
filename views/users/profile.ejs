@@ -12,7 +12,35 @@
         color: rgb(79, 224, 35);
         font-size: 20px;
     }
+    .like{
+            transition: 1s;
+            border-radius: 50%;
+            width: 100%; 
+            height: 100%; 
+            font-size: 200%;
+            outline: none;
+            box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.616);
+            text-shadow: 1px 1px 1px 5px red;
+            border: 2px dotted rgba(0, 0, 0, 0.616);
+            
+        }
+        .like:hover, .liked:hover{
+            cursor: pointer; 
+        }
+        .liked{
+            transition: 1s;
+            border-radius: 50%;
+            width: 100%; 
+            height: 100%; 
+            font-size: 200%;
+            outline: none;
+            background-color: black;
+            color: red;
+            border: 2px dotted rgba(202, 66, 66, 0.767) ;
+            box-shadow: 0 0 0 4px rgba(36, 19, 19, 0.767);
+        }
 </style>
+<!-- //////// CODE ///////////////////// -->
 <div id="profile-bio-section">
     <div id="profile-picture" style="background-image: url(<%=loggedInUser.avatar%>);"> </div>
     <div style="color: white;">
@@ -36,6 +64,16 @@ user
 <div id="post-container">
     <div id="post-holder" style="margin-top: 1%; width: 80%; margin-left: 10%;">
         <div id="post-pic"><img id="image" src="<%= post.image%>" alt=""></div>
+        <div>
+
+            <button name="<%= post._id%>" id="<%= loggedInUser._id%>" class="<%= !post.likes.includes(loggedInUser._id) ? 'like' : 'liked'%>"  >
+                
+                ❤</button>
+            
+            <p style="color: white;">  <span id="<%= post._id%>"><%= post.likes.length%></span>  likes</p>
+
+
+        </div>
         <div id="caption-holder">
                 <div id="car-information"><h2 style="font-size: 35px;font-family: 'Arvo', serif;"> <span><%= post.brand%> </span><span> <%= post.model%> </span><span> <%= post.year%><h2></span>
                     <h2 style="font-family: 'Arvo', serif;font-size: 30px;"><%= post.horsePower %> hp  <span> <%= post.engine %></h2></div>
@@ -93,4 +131,23 @@ user
 <h1 style="margin: 20% 50%; color: teal;">NO POSTS YET</h1>
 <%}%>
    
+<script>
+    $( '.like, .liked').on('click',async function(evt){
+        console.log(evt.target)
+        var like = document.getElementsByName(`${evt.target.name}`)
+        var likesNumber = document.getElementById(`${evt.target.name}`)
+        $(like).toggleClass('like')
+        $(like).toggleClass('liked')
+        if(evt.target.className === 'liked') likesNumber.innerHTML = `${parseInt(likesNumber.innerHTML)+1}`
+        if(evt.target.className === 'like') likesNumber.innerHTML = `${parseInt(likesNumber.innerHTML)-1}`
+        fetch(`/likes/${evt.target.id}/${evt.target.name}`)
+        .then(res => {
+           return res.json()  
+        })
+        .then(data => {
+            console.log(data)
+        })
+
+    })
+</script>
 <%- include('../partials/footer') %>

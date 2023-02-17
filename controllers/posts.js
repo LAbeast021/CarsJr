@@ -16,6 +16,7 @@ module.exports = {
 
 function newPost (req,res){
     request(URL , function(err, response, body){
+        console.log(body , " Hellloooooo");
         var cars = JSON.parse(body);
         let arr = [];
         cars.forEach(car => {
@@ -58,7 +59,6 @@ function createComment (req, res){
         req.body.visitorId = req.user._id
         req.body.visitorAvatar = req.user.avatar
         req.body.visitorName = req.user.name
-        console.log(post,'saaaaaaaag')
         post.comments.push(req.body)
         post.save(function(err){
             res.redirect(`back`);

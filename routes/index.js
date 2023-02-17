@@ -20,9 +20,13 @@ router.get('/auth/google',passport.authenticate(
       failureRedirect: '/home'
     }
     ));
-    router.get('/logout', function(req, res) {
-      req.logout();
-      res.redirect('/');
+    router.get('/logout', function(req, res , next) {
+      // req.logout();
+      // res.redirect('/');
+      req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+      });
     });
 
 module.exports = router;

@@ -19,9 +19,10 @@ function newPost (req,res){
         var cars = JSON.parse(body);
         let arr = [];
         cars.forEach(car => {
-            if(!arr.includes(car.name)){
-                arr.push(car.name)
-            }
+            let carInfo = {};
+            carInfo.name = car.name;
+            carInfo.image = car.img_url;
+            arr.push(carInfo)
         })
         // console.log(arr)
         cars = arr

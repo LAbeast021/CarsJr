@@ -33,14 +33,14 @@ router.get('/edit/:id',isLoggedIn ,function(req,res,next){
     }) 
 })
 router.post('/edit/:id', function(req,res){
-  User.findOne({_id:req.user._id},function(err, user){
-    user.posts[req.params.id].caption = req.body.caption
-    user.save(function(err){
+  Post.findOne({_id:req.params.id},function(err,post){
+    post.caption = req.body.caption;
+    post.save(function(err){
       res.redirect(`/users/profile/${req.user._id}`)
     })
   })
+ 
 })
-
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
@@ -49,3 +49,11 @@ function isLoggedIn(req, res, next) {
 
 
 module.exports = router;
+
+//  WHY DID NOT I ADD A POSTS ARRAY TO MY USER MODEL ????????????????
+// User.findOne({_id:req.user._id},function(err, user){
+//   user.posts[req.params.id].caption = req.body.caption
+//   user.save(function(err){
+//     res.redirect(`/users/profile/${req.user._id}`)
+//   })
+// })

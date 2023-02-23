@@ -23,7 +23,7 @@ router.post('/upload', upload.single('image') , postsCtrl.createPost)
 router.get('/new',isLoggedIn ,postsCtrl.newPost);
 // ////////////////////////////////////////////////////////////////////////////
 router.get('/edit/:id',isLoggedIn ,function(req,res,next){
-  Post.findOne({userId:req.user._id},function(err,post){
+  Post.findOne({_id:req.params.id},function(err,post){
       var value = post.caption;
       res.render('users/edit-caption',{
         idx:req.params.id,

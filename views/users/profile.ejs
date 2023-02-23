@@ -78,7 +78,7 @@ user
                 <div id="car-information"><h2 style="font-size: 35px;font-family: 'Arvo', serif;"> <span><%= post.brand%> </span><span> <%= post.model%> </span><span> <%= post.year%><h2></span>
                     <h2 style="font-family: 'Arvo', serif;font-size: 30px;"><%= post.horsePower %> hp  <span> <%= post.engine %></h2></div>
             <h2 style="color: white; font-size: 37px;"><%= post.caption%></h2>    
-            <form action="/posts/edit/<%= postIdx%>" method="GET">
+            <form action="/posts/edit/<%= post._id%>" method="GET">
                    <input id="edit-pen" style="width: 20%;" type="submit" value="✎"></form>
         </div>
     </div>

@@ -50,24 +50,32 @@
         <input type="submit" value="submit the pic">
 
     </form>
-    <img name="logo" src="" alt="">
+    <!-- <img name="logo" src="" alt=""> -->
 </div> 
 </body>
 <% var carsList = cars ; %>
-<script>
-    $("[name='model'] , [name='engine'] , [name='horsePower'] , [name='caption'] , [name='year']  " ).on("click" , function(evt) {
-     let chosenBrandList = $("[name='brand']");
-     let carLogo = $("[name='logo']").attr('src');
-     chosenBrand = chosenBrandList[0].value;
-     let carsArray = <%- JSON.stringify(carsList) %>;
-     carsArray.forEach(car => {
-        if(car.name === chosenBrand){
-            if(carLogo != car.image) {
-                $("[name='logo']").attr('src' , car.image)
-            }
-        }
+<!-- <script>
+    var request = require("request");
+    const URL = "filippofilip95.github.io/car-logos-dataset-web" ; 
+    request(URL , function(err, response, body){
+        var logos = JSON.parse(body) ;
+        console.log(logos) ;
+    });
+
+    // $("[name='model'] , [name='engine'] , [name='horsePower'] , [name='caption'] , [name='year']  " ).on("click" , function(evt) {
+    //  let chosenBrandList = $("[name='brand']");
+    //  let carLogo = $("[name='logo']").attr('src');
+    //  chosenBrand = chosenBrandList[0].value;
+    //  let carsArray = <%- JSON.stringify(carsList) %>;
+    //  filippofilip95.github.io/car-logos-dataset-web
+    //  carsArray.forEach(car => {
+    //     if(car.name === chosenBrand){
+    //         if(carLogo != car.image) {
+    //             $("[name='logo']").attr('src' , car.image)
+    //         }
+    //     }
         
-     });
-    })
- </script>
+    //  });
+    // })
+ </script> -->
 </html>

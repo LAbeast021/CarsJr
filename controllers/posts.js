@@ -1,7 +1,7 @@
 var User = require('../models/user');
 var Post = require('../models/post');
 var request = require("request");
-const URL = 'https://private-anon-ea15b1e01c-carsapi1.apiary-mock.com/manufacturers'
+const URL = 'https://private-anon-ba984d1516-carsapi1.apiary-mock.com/manufacturers'
 const url2  ="https://private-anon-37cbdd5199-carsapi1.apiary-mock.com/cars"
 // LIST OF MANUFACTORS IN NAME PROPERTY AND ALL CAR MODELS IN MODEL
 

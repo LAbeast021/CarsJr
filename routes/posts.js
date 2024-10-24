@@ -18,10 +18,19 @@ var postsCtrl = require('../controllers/posts');
 
 
 router.post('/comment/:id' , postsCtrl.createComment);
-router.delete('/comment/:id', postsCtrl.deleteComment)
-router.post('/upload', upload.single('image') , postsCtrl.createPost)
+
+router.delete('/comment/:id', postsCtrl.deleteComment);
+
+router.post('/upload', upload.single('image') , postsCtrl.createPost);
+
 router.get('/new',isLoggedIn ,postsCtrl.newPost);
+
+
+
 // ////////////////////////////////////////////////////////////////////////////
+
+
+
 router.get('/edit/:id',isLoggedIn ,function(req,res,next){
   Post.findOne({_id:req.params.id},function(err,post){
       var value = post.caption;
